@@ -1,0 +1,8 @@
+6.2 Select the project names which are not assigned yet
+SELECT Name 
+FROM Projects
+WHERE Code NOT In
+(
+SELECT Project 
+         FROM AssignedTo
+);
