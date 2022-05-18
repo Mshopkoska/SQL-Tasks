@@ -61,7 +61,12 @@ WHERE Code IN
   );
 
 2.15 Very Important - Select the name and last name of employees working for departments with second lowest budget.
-IDK
+SELECT e.Name, e.LastName
+FROM Employees e 
+WHERE e.Department = (
+       SELECT sub.Code 
+       FROM (SELECT * FROM Departments d ORDER BY d.budget LIMIT 2) sub 
+       ORDER BY budget DESC LIMIT 1);
 
 2.16 Add a new department called "Quality Assurance", with a budget of $40,000 and departmental code 11. 
 INSERT INTO Departments VALUES(11, 'Quality Assurance', 40000);

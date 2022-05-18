@@ -37,3 +37,11 @@ FROM Boxes
 GROUP BY Warehouse;
 
 3.9 Select the codes of all warehouses that are saturated (a warehouse is saturated if the number of boxes in it is larger than the warehouse's capacity).
+SELECT Code
+   FROM Warehouses
+   WHERE Capacity <
+   (
+     SELECT COUNT(*)
+       FROM Boxes
+       WHERE Warehouse = Warehouses.Code
+   );
